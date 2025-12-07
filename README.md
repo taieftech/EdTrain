@@ -5,6 +5,7 @@ Type a subject → get a **timed exam** → answer by text/camera → get **inst
 
 ## ✨ Features
 - 25 fresh MCQs or 8 brand-new CQs (Bangla format)
+- No language barrier, it can translate and understand any language!
 - MCQ auto-grading + CQ examiner-style scoring
 - Works on low-end phones, offline (PWA)
 - OCR (photo/PDF) support
@@ -28,9 +29,10 @@ Type a subject → get a **timed exam** → answer by text/camera → get **inst
 - mammoth.js
 - KaTeX / MathJax
 - PWA
+- GPT 4+4o
 
 ## 🛠 Setup
 ```bash
-git clone https://github.com/yourname/edtrain
+git clone https://github.com/taieftech/edtrain
 cd edtrain
-# open index.html in browser or deploy to Cloudflare Pages
+# Keep Html, CSS and JavaScript files in same folder. Open index.html and Done ✅.
