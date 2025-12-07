@@ -1,4 +1,5 @@
 # EdTrain – AI-powered HSC & Admission Practice (Bangladesh)
+Try live at: [EdTrain](https://EdTrain.pages.dev)
 
 EdTrain turns any phone into a **24/7 personal examiner** for Bangladeshi HSC & Admission tests.  
 Type a subject → get a **timed exam** → answer by text/camera → get **instant realistic marking**.
