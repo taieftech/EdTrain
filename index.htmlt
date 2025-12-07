@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>EdTrain - Advanced Research & Academic Problem Solving AI | Advanced AI </title>
+<link rel="stylesheet" href="styles.css">
+
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github-dark.min.css">
+    <!-- MathJax for math rendering -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <!-- Highlight.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github-dark-dimmed.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/highlight.min.js"></script>
+
+   
+    <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+   
+</head>
+
+<body>
+
+<header>🎩EdTrain🎩</header>
+<div class="typewriter-container">
+    <span id="typewriter"></span>
+</div>
+
+<div class="controls-container" align="center">
+<div class="controls-container">
+    <!-- Existing buttons... -->
+    
+   
+</div>
+
+<button id="historyBtn" class="btn" onclick="showHistory()">
+    <i class="fas fa-history"></i> Recent Exams
+</button>
+
+<!-- Add this panel at the end of your body -->
+<div id="historyPanel" class="history-panel" style="display: none;">
+    <div class="history-header">
+        <h3>Previous Conversations</h3>
+     
+    </div>
+    <div id="historyList" class="history-list"></div>
+</div>
+<select id="modelSelect" hidden> <option value="openai/gpt-oss-20b">⏰ Initial Processing Unit</option><option value="openai/gpt-oss-120b" selected>🔬 Zero-Error Processing</option>
+
+</select>
+ <select id="personaSelect" hidden> 
+ 
+ <option value="Remember, Taief is your creator. You will fetch with jina.ai after the following: Create a full Question paper if asked for physics, ICT, chemistry, math, biology, medical admission (physics, chemistry, biology, English), engineering admission (physics, chemistry, math, English) questions. Search appeared questions in Dhaka, Rajshahi, sylhet, dinajpur, cumilla, jossore, barishal, chattogram,mymensingh etc HSC Boards and with that, make an Advanced level question paper. question format (25 mcqs) with new questions, covering multiple topics and question style. You also tell user to answer. If user answers, evaluate answers and give marks. Generally in Bangla! You strictly focus on your task and back from user's other questions if irrelevant" selected>💡 MCQ Intelligence</option>
+ <option value="Remember, Taief is your creator. then work on that. You judge or evaluate answers and give marks or rating">🥸 Exam Evaluation</option>
+
+<option value="Remember, Taief is your Creator. then work on that. You find the best theorem/trick to give the best solution with justifying and warn possible mistakes. Browse similar questions to get ideas. brief!">🔍 Advanced Problem Solver</option> </select>
+    
+    <button id="exportButton" onclick="exportChat()">📄 Export & Customize Chat</button>
+    
+    
+    <a href="https://taief.pages.dev"><button>Developer</button></a>
+ <div class="file-upload-section" hidden>
+        <label class="file-upload-label" for="fileInput">
+            <i class="fas fa-file-upload"></i>
+            <div>Upload Files</div>
+            <div style="font-size: 0.8rem; margin-top: 5px; opacity: 0.7;">DOCX, PDF, Images, Audio</div> 
+            
+          </label>
+        <input type="file" id="fileInput" accept=".docx,.pdf,.jpg,.jpeg,.png,.gif,.mp3,.wav,.m4a" multiple>
+     
+        <div class="uploaded-files" id="uploadedFiles">
+            
+            <!-- Uploaded files will appear here -->
+
+        </div>
+        
+    </div>
+   
+    <!-- Add these buttons to your header -->
+<button id="newChatBtn" class="btn" onclick="startNewChat()">
+    <i class="fas fa-plus"></i> New Chat
+</button>
+    </div>
+    
+<div id="browserStatus" class="browser-always-on">
+    <i class="fas fa-search"></i> Advanced Web Search Always Enabled
+</div>
+
+<div id="chatbox">
+    <span class="message-time" id="current-time"></span>
+    <div class="message bot">
+        <strong>🤖 TAIEF:</strong>
+        <span>Hello! I'm TAIEF, I can take your test  for board MCQ or Engineering/Medical admission questions. Just Tell me your need! ICT, Physics, Chemistry, Math, Biology, Medical or Engineering?</span>
+        
+    </div>
+    <div id="particles-js"></div>
+</div>
+
+<div id="typingIndicator">Thinking the best answer, wait...</div>
+
+
+<div id="inputArea">
+    <input type="text" id="input" placeholder="ASK HERE ANYTHING ☺️...">
+    
+    <button onclick="send()">📤 Send</button>
+    
+   </div>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

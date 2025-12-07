@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdTrain BD | HSC and Admission Simulated Examiner AI</title>
+    <link rel="icon" href="/favicon.ico" type="image/ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" loading="lazy">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" loading="lazy">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" loading="lazy">
+  <link rel="manifest" href="/site.webmanifest">
+
+ 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KE2SRYJYM9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KE2SRYJYM9');
+  </script>
+    <meta name="description" content="EdTrain BD is an advanced intelligent chat system designed for Simulated board exam Or admission exam practice in Bangladesh. An AI that creates the questions on the board format and it also evaluates answers MCQ or CQ answers by the students. It develops deep problem solving, helps in learning, creativity, and fast accurate answers. Experience high-performance AI optimized for students, creators, and developers.">
+    
+    <meta name="keywords" content="TaiefMind AI, TaiefMind, AI chatbot, intelligent assistant, EdTrain, EdTrain bd, Olympiad, math Olympiad, chorcha, problem solving AI, creative AI, productivity AI, advanced chat interface, Md Taief Khan, Taief AI, Taief Khan AI">
+    
+  
+ 
+    <link rel="canonical" href="https://edtrain.pages.dev/">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: monospace; 
+            background: #0a0a0f; 
+            color: #00ffea; 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            overflow: hidden; 
+        }
+        .container { text-align: center; padding: 2rem; position: relative; }
+        .logo { 
+            font-size: 3rem; 
+            font-weight: bold; 
+            letter-spacing: 4px; 
+            margin-bottom: 2rem; 
+            text-shadow: 0 0 10px #00ffea; 
+            animation: glitch 3s infinite; 
+        }
+        .buttons { 
+            display: flex; 
+            gap: 1.5rem; 
+            margin-top: 3rem; 
+            justify-content: center; 
+        }
+        button { 
+            padding: 15px 30px; 
+            font-size: 1rem; 
+            background: transparent; 
+            color: #00ffea; 
+            border: 2px solid #00ffea; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            transition: 0.3s; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+        }
+        button:hover { 
+            background: rgba(0, 255, 234, 0.1); 
+            box-shadow: 0 0 20px #00ffea; 
+            transform: translateY(-2px); 
+        }
+        .scan-line { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 2px; 
+            background: #00ffea; 
+            animation: scan 2s linear infinite; 
+            box-shadow: 0 0 10px #00ffea; 
+        }
+        .matrix-digit { 
+            position: fixed; 
+            color: #00ffea; 
+            font-size: 1rem; 
+            opacity: 0.3; 
+            animation: fall linear forwards; 
+        }
+        @keyframes glitch { 
+            0%, 100% { transform: translate(0); } 
+            2% { transform: translate(-1px, 1px); } 
+            4% { transform: translate(-1px, -1px); } 
+            6% { transform: translate(1px, 1px); } 
+            8% { transform: translate(1px, -1px); } 
+        }
+        @keyframes scan { 
+            0% { top: 0; } 
+            100% { top: 100%; } 
+        }
+        @keyframes fall { 
+            to { transform: translateY(100vh); opacity: 0; } 
+        }
+        @media (max-width: 768px) { 
+            .buttons { flex-direction: column; gap: 1rem; } 
+            .logo { font-size: 2rem; } 
+        }
+    </style>
+</head>
+<body>
+    <div class="scan-line"></div>
+    <div class="container">
+        <div class="logo">EdTrain</div>
+        <div class="buttons">
+            <button id="mcqBtn">MCQ</button>
+            <button id="writtenBtn">WRITTEN</button>
+        </div>
+    </div>
+    
+    <script>
+        // Matrix rain
+        function createMatrix() {
+            const chars = '01';
+            const digit = document.createElement('div');
+            digit.className = 'matrix-digit';
+            digit.textContent = chars[Math.floor(Math.random() * chars.length)];
+            digit.style.left = Math.random() * 100 + 'vw';
+            digit.style.animationDuration = Math.random() * 2 + 1 + 's';
+            document.body.appendChild(digit);
+            setTimeout(() => digit.remove(), 3000);
+        }
+        setInterval(createMatrix, 50);
+        
+        // Button handlers
+        document.getElementById('mcqBtn').onclick = function() {
+            handleClick(this, '/mcq');
+        };
+        document.getElementById('writtenBtn').onclick = function() {
+            handleClick(this, '/written');
+        };
+        
+        // Click handler
+        function handleClick(btn, url) {
+            btn.disabled = true;
+            btn.textContent = 'ACCESSING...';
+            btn.style.background = 'rgba(0, 255, 234, 0.2)';
+            setTimeout(() => window.location.href = url, 800);
+        }
+        
+        // Keyboard shortcuts
+        document.onkeydown = function(e) {
+            if (e.code === 'Digit1' || e.code === 'KeyM') document.getElementById('mcqBtn').click();
+            if (e.code === 'Digit2' || e.code === 'KeyW') document.getElementById('writtenBtn').click();
+        };
+    </script>
+</body>
+</html>
